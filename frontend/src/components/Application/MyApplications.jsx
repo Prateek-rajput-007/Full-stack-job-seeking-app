@@ -38,7 +38,7 @@ const MyApplications = () => {
   const deleteApplication = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/application/delete/${id}`,
+        `https://js-seeker.onrender.com/api/v1/application/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(data.message);
