@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  MdOutlineDesignServices,
-  MdOutlineWebhook,
-  MdAccountBalance,
-  MdOutlineAnimation,
-} from "react-icons/md";
+import { motion, useInView } from "framer-motion";
+import { MdOutlineDesignServices, MdOutlineWebhook, MdAccountBalance, MdOutlineAnimation } from "react-icons/md";
 import { TbAppsFilled } from "react-icons/tb";
 import { FaReact } from "react-icons/fa";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { IoGameController } from "react-icons/io5";
-import { motion } from "framer-motion";
 import "./PopularCategories.css";
 
 const categories = [
@@ -24,17 +19,22 @@ const categories = [
 ];
 
 const PopularCategories = () => {
+  const ref = React.useRef(null);
+  const inView = useInView(ref, { triggerOnce: false });
+
   return (
-    <section className="popular-categories">
+    <section className="popular-categories" ref={ref}>
       <div className="container">
-        <h2 className="section-title" style={{ textAlign: "center" }}>Explore <span>Popular Categories</span></h2>
+        <h2 className="section-title">Explore <span>Popular Categories</span></h2>
         <div className="categories-grid">
           {categories.map((category) => (
             <motion.div
               key={category.id}
               className="category-card"
               whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 1 }}
             >
               <div className="icon">{category.icon}</div>
               <h3>{category.title}</h3>
