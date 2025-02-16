@@ -1,0 +1,45 @@
+/* Footer General */
+.footerShow {
+  background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+  display: flex;
+    justify-content: space-between;
+    padding: 25px 120px;
+    align-items: center;
+  }
+  
+  .footerShow div {
+    display: flex;
+    gap: 12px;
+    font-size: 16px;
+    color: #f1f3f6;
+  }
+  
+  .footerShow div a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #f1f3f6;
+  }
+  
+  .footerShow div a:hover {
+    color: #ffb400;
+    transform: scale(1.2);
+    transition: all 0.3s;
+  }
+  
+  .footerHide {
+    display: none;
+  }
+  
+  @media (max-width: 830px) {
+    .footerShow {
+      padding: 25px 45px;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .footerShow {
+      flex-direction: column-reverse;
+      gap: 25px;
+      text-align: center;
+    }
+  }

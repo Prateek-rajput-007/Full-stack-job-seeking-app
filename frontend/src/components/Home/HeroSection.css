@@ -1,0 +1,104 @@
+/* General Styles */
+.heroSection {
+  background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+  color: white;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  
+  /* Layout */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  
+  /* Text Content */
+  .textContent {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .textContent h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .textContent h1 span {
+    color: #f39c12;
+  }
+  
+  .textContent p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+  
+  /* Button */
+  .exploreBtn {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .exploreBtn:hover {
+    background: #e67e22;
+  }
+  
+  /* Hero Image */
+  .heroImage img {
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Stats Section */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 20px;
+  }
+  
+  .statCard {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 250px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .statCard:hover {
+    transform: scale(1.1);
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #f39c12;
+  }
+  
+  .content h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .content p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  

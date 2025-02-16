@@ -1,0 +1,99 @@
+/* Job Details Page */
+.jobDetail {
+    width: 100%;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.jobDetail .container {
+    max-width: 700px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    text-align: left;
+}
+
+/* Job Title */
+.jobDetail h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Job Info Banner */
+.jobDetail .banner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 1rem;
+}
+
+/* Job Detail Fields */
+.jobDetail .banner p {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.jobDetail .banner p:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Highlighted Text */
+.jobDetail .banner span {
+    font-weight: bold;
+    color: white;
+}
+
+/* Apply Now Button */
+.jobDetail .banner a {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 0;
+    text-align: center;
+    background: #ff7eb3;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect on Apply Button */
+.jobDetail .banner a:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .jobDetail .container {
+        padding: 30px;
+    }
+    .jobDetail h3 {
+        font-size: 1.8rem;
+    }
+    .jobDetail .banner p {
+        flex-direction: column;
+        text-align: center;
+    }
+}

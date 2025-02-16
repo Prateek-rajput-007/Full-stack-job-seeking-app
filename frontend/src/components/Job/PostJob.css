@@ -1,0 +1,146 @@
+/* General Page Styling */
+.post-job-page-custom {
+    width: 100%;
+    padding: 190px 20px;
+    background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Container */
+.post-job-container-custom {
+    max-width: 600px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    margin: auto;
+}
+
+/* Section Title */
+.post-job-title-custom {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Input Fields - Stacked Layout */
+.post-job-inputWrapper-custom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input & Select Styling */
+.post-job-inputWrapper-custom input,
+.post-job-inputWrapper-custom select,
+.post-job-inputWrapper-custom textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Placeholder Styling */
+.post-job-inputWrapper-custom input::placeholder,
+.post-job-inputWrapper-custom select,
+.post-job-inputWrapper-custom textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focus & Hover Effects */
+.post-job-inputWrapper-custom input:focus,
+.post-job-inputWrapper-custom select:focus,
+.post-job-inputWrapper-custom textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Salary Section */
+.post-job-salary-wrapper-custom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Salary Range Inputs */
+.post-job-ranged-salary-custom {
+    display: flex;
+    gap: 10px;
+}
+
+/* Adjusted Inputs for Salary */
+.post-job-ranged-salary-custom input {
+    flex: 1;
+}
+
+/* Salary Type Select */
+.post-job-salary-type-custom {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Salary Message */
+.post-job-salary-message-custom {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Textarea Styling */
+.post-job-inputWrapper-custom textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit Button */
+.post-job-button-custom {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    background: #ff7eb3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.post-job-button-custom:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-job-container-custom {
+        padding: 30px;
+    }
+}

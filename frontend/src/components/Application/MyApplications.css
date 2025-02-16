@@ -1,0 +1,116 @@
+/* Background similar to HeroSection */
+.my-applications-page {
+  width: 100%;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Container */
+.my-applications-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centering content */
+}
+
+/* Section Title */
+.my-applications-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Centering the Cards */
+.my-applications-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Job Card */
+.my-applications-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  min-width: 350px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+
+/* Hover Effect */
+.my-applications-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  color: white;
+}
+
+/* Job Details */
+.my-applications-card p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.my-applications-card span {
+  font-weight: bold;
+  color: #ffb400;
+}
+
+/* Delete Button */
+.btn_area {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn_area button {
+  background: #ff4f7a;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn_area button:hover {
+  background: #ff235d;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .my-applications-container {
+      width: 100%;
+  }
+
+  .my-applications-card {
+      width: 90%;
+  }
+
+  .my-applications-title {
+      font-size: 2rem;
+  }
+}

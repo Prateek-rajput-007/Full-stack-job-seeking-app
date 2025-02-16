@@ -1,0 +1,98 @@
+/* Background similar to HeroSection */
+.howitworks {
+    width: 100%;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-right: 300px;
+}
+
+/* Highlight Effect */
+.highlight {
+    color: #ffb400; /* Yellow accent */
+    font-style: italic;
+}
+
+/* Subtitle */
+.subtext {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.8;
+    text-align: center;
+    max-width: 800px; /* Limit the width for better readability */
+}
+
+/* Steps Container */
+.steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Individual Cards */
+.step-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.step-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Step Icons */
+.step-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #ffb400; /* Matching yellow accent */
+}
+
+/* Card Titles */
+.step-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Card Text */
+.step-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

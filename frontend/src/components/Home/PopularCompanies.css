@@ -1,0 +1,110 @@
+/* Background similar to HowItWorks */
+.popular-companies {
+    width: 100%;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+    color: white;
+    text-align: center;
+  }
+  
+  /* Container */
+  .popular-companies-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Section Title */
+  .popular-companies-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Banner */
+  .popular-companies-banner {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  /* Company Card */
+  .popular-companies-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 350px;
+  }
+  
+  .popular-companies-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    color: white;
+  }
+  
+  /* Icon */
+  .popular-companies-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #ffb400;
+    transition: all 0.3s;
+  }
+  
+  /* Company Title */
+  .popular-companies-card p:first-child {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  /* Company Location */
+  .popular-companies-card p:last-child {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  
+  /* Hover Effects */
+  .popular-companies-card:hover .popular-companies-icon {
+    color: white;
+  }
+  
+  .popular-companies-card:hover p:first-child {
+    color: #121212;
+  }
+  
+  /* Button */
+  .popular-companies-button {
+    background: #ff7eb3;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 20px;
+  }
+  
+  .popular-companies-button:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .popular-companies-banner {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

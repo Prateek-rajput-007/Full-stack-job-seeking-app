@@ -1,0 +1,196 @@
+/* Full Container */
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e1e2f, #3a3a5a);
+    font-family: "Poppins", sans-serif;
+    padding: 50px;
+    color: white;
+    flex-wrap: wrap;
+  }
+  
+  /* Left Section */
+  .loginLeft {
+    flex: 1;
+    max-width: 450px;
+    text-align: center;
+    padding: 20px;
+    animation: float 3s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .loginLeft h1 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .loginLeft p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-top: 10px;
+  }
+  
+  .jobZeeInfo {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.9;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+  }
+  
+  .logo {
+    width: 500px; /* Increased size */
+    margin-bottom: 20px;
+}
+
+  
+  /* Login Box */
+  .loginBox {
+    flex: 1;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Form Elements */
+  .inputField {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .inputField label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  /* Input Styling */
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .inputWrapper input,
+  .inputWrapper select {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 8px;
+    outline: none;
+    color: black;
+  }
+  
+  .inputWrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Input Hover & Focus */
+  .inputWrapper:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .inputWrapper input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+  }
+  
+  /* Icons */
+  .inputWrapper svg {
+    color: #ffd700;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  /* Submit Button */
+  button {
+    background: #ff7eb3;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+  
+  button:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+  }
+  
+  /* Register Link */
+  a {
+    display: block;
+    margin-top: 12px;
+    color: #ffd700;
+    font-weight: 500;
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .loginContainer {
+      flex-direction: column;
+    }
+    .loginLeft {
+      max-width: 100%;
+    }
+    .loginBox {
+      max-width: 100%;
+    }
+  }
+
+  .infoTitle {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #ffd700;
+  }
+  
+  .infoDescription {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.9;
+  }
+  
+  .infoSubtitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #ff7eb3;
+  }
+  
+  .infoList {
+    margin-top: 15px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .infoList li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .infoList li::before {
+    content: "🔹";
+    margin-right: 10px;
+    color: #ffd700;
+  }

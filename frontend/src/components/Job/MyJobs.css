@@ -1,0 +1,293 @@
+/* Background similar to HeroSection */
+.my-jobs-page {
+    width: 100%;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* General Page Styling */
+.my-jobs-page-custom {
+    width: 100%;
+    padding: 190px 20px;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Container */
+.my-jobs-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Container */
+.my-jobs-container-custom {
+    max-width: 800px; /* Increased width for better layout */
+    width: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    margin: auto;
+}
+
+/* Section Title */
+.my-jobs-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Section Title */
+.my-jobs-title-custom {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Banner */
+.my-jobs-banner {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Job Card */
+.my-jobs-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 350px;
+}
+
+.my-jobs-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    color: white;
+}
+
+/* Job Details */
+.my-jobs-card p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.my-jobs-card a {
+    background: #ff7eb3;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.my-jobs-card a:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+}
+
+/* Input Fields */
+.my-jobs-inputField {
+    margin-bottom: 20px;
+}
+
+.my-jobs-inputField label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.my-jobs-inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.my-jobs-inputWrapper input,
+.my-jobs-inputWrapper select {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.my-jobs-inputWrapper input:focus,
+.my-jobs-inputWrapper select:focus {
+    outline: none;
+}
+
+.my-jobs-inputWrapper svg {
+    font-size: 1.5rem;
+    color: #ffb400;
+}
+
+/* Input Fields - Stacked Layout */
+.my-jobs-inputWrapper-custom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.my-jobs-inputWrapper-custom input,
+.my-jobs-inputWrapper-custom select,
+.my-jobs-inputWrapper-custom textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Placeholder Styling */
+.my-jobs-inputWrapper-custom input::placeholder,
+.my-jobs-inputWrapper-custom select,
+.my-jobs-inputWrapper-custom textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focus & Hover Effects */
+.my-jobs-inputWrapper-custom input:focus,
+.my-jobs-inputWrapper-custom select:focus,
+.my-jobs-inputWrapper-custom textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Salary Section */
+.my-jobs-salary-wrapper-custom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Salary Range Inputs */
+.my-jobs-ranged-salary-custom {
+    display: flex;
+    gap: 10px;
+}
+
+/* Adjusted Inputs for Salary */
+.my-jobs-ranged-salary-custom input {
+    flex: 1;
+}
+
+/* Salary Type Select */
+.my-jobs-salary-type-custom {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Salary Message */
+.my-jobs-salary-message-custom {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Textarea Styling */
+.my-jobs-inputWrapper-custom textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Button */
+.my-jobs-button {
+    background: #ff7eb3;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 20px;
+}
+
+/* Submit Button */
+.my-jobs-button-custom {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    background: #ff7eb3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.my-jobs-button:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+}
+
+/* Button Hover Effect */
+.my-jobs-button-custom:hover {
+    background: #ff4f7a;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .my-jobs-banner {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .my-jobs-container-custom {
+        padding: 30px;
+    }
+}
