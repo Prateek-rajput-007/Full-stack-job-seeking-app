@@ -36,7 +36,7 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/application/post",
+        "https://js-seeker.onrender.com/api/v1/application/pos",
         requestData,
         {
           withCredentials: true,
