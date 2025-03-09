@@ -54,7 +54,7 @@ const HeroSection = () => {
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 1.5 }}
         >
-          <img src="/images.jpeg" alt="hero" />
+          <img src="/me.png" alt="hero" />
         </motion.div>
       </div>
 
