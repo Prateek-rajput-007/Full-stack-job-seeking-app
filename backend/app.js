@@ -17,8 +17,13 @@ const app = express();
 
 // Enable CORS with correct origin
 
-app.use(cors({ origin: 'https://comforting-gnome-40c18b.netlify.app' }));
-
+app.use(
+  cors({
+    origin: "https://js-seeker.onrender.com/", // Directly using the client URL
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 
 // Resolve directory name
 const __dirname = path.resolve();
