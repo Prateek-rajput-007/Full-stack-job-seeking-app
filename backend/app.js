@@ -19,7 +19,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://js-seeker.onrender.com/", // Directly using the client URL
+    origin: "https://js-seeker.onrender.com", // Directly using the client URL
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
