@@ -16,21 +16,9 @@ dotenv.config();
 const app = express();
 
 // Enable CORS with correct origin
-const allowedOrigins = [
-  'https://task-mangement-frontend-kappa.vercel.app',
-  'https://comforting-gnome-40c18b.netlify.app'
-]
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true
-}))
+app.use(cors({ origin: 'https://comforting-gnome-40c18b.netlify.app' }));
+
 
 // Resolve directory name
 const __dirname = path.resolve();
