@@ -1,4 +1,4 @@
-import axios from "axios";
+import { postApplication } from "../../services/applicationService";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ const Application = () => {
 
   const { isAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   const handleApplication = async (e) => {
     e.preventDefault();
@@ -35,14 +35,7 @@ const Application = () => {
     console.log("Sending application:", requestData); // Debugging: Check payload before sending
 
     try {
-      const { data } = await axios.post(
-        "https://js-seeker.onrender.com/api/v1/application/post",
-        requestData,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const { data } = await postApplication(requestData);
 
       // Reset form fields
       setName("");
@@ -64,121 +57,82 @@ const Application = () => {
   }
 
   return (
-    <section
-      style={{
-        width: "100%",
-        padding: "100px 20px",
-        background: "linear-gradient(to right, #1a1a2e, #16213e, #0f3460)",
-        color: "white",
-        textAlign: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "600px",
-          width: "90%",
-          background: "rgba(255, 255, 255, 0.1)",
-          padding: "40px",
-          borderRadius: "12px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
-          backdropFilter: "blur(8px)",
-          margin: "auto",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            marginBottom: "20px",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-          }}
-        >
-          Application Form
-        </h3>
-        <form
-          onSubmit={handleApplication}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={inputStyle}
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={inputStyle}
-          />
-          <input
-            type="number"
-            placeholder="Your Phone Number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            style={inputStyle}
-          />
-          <input
-            type="text"
-            placeholder="Your Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            style={inputStyle}
-          />
-          <textarea
-            placeholder="Cover Letter..."
-            value={coverLetter}
-            onChange={(e) => setCoverLetter(e.target.value)}
-            style={{
-              ...inputStyle,
-              resize: "vertical",
-              minHeight: "150px",
-            }}
-          />
-          <button type="submit" style={buttonStyle}>
-            Send Application
-          </button>
-        </form>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
-    </section>
+
+      <div className="relative w-full max-w-2xl">
+        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+          <div className="text-center mb-10">
+            <h3 className="text-3xl font-bold text-white mb-2">
+              Application Form
+            </h3>
+            <p className="text-slate-400">
+              Submit your application for this position
+            </p>
+          </div>
+
+          <form onSubmit={handleApplication} className="space-y-6">
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Your Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Your Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <textarea
+                placeholder="Cover Letter..."
+                value={coverLetter}
+                onChange={(e) => setCoverLetter(e.target.value)}
+                rows="6"
+                className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-lg font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              Send Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
-};
-
-const inputStyle = {
-  width: "100%",
-  padding: "12px",
-  fontSize: "1rem",
-  borderRadius: "8px",
-  border: "none",
-  background: "rgba(255, 255, 255, 0.2)",
-  color: "white",
-  transition: "all 0.3s ease-in-out",
-};
-
-const buttonStyle = {
-  width: "100%",
-  padding: "14px",
-  fontSize: "1.2rem",
-  fontWeight: "bold",
-  textTransform: "uppercase",
-  borderRadius: "8px",
-  background: "#2ecc71",
-  color: "white",
-  border: "none",
-  cursor: "pointer",
-  transition: "all 0.3s ease-in-out",
 };
 
 export default Application;

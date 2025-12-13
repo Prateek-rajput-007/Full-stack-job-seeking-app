@@ -1,31 +1,17 @@
 import React, { useContext } from "react";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaYoutube, FaLinkedin } from "react-icons/fa";
-import { RiInstagramFill } from "react-icons/ri";
-import "./Footer.css";
 
 const Footer = () => {
   const { isAuthorized } = useContext(Context);
+  if (!isAuthorized) return null;
+
   return (
-    <footer className={isAuthorized ? "footerShow" : "footerHide"}>
-      <div>&copy; All Rights Reserved By Prateek.</div>
-      <div>
-        <Link to={"#"} target="_blank">
-          <FaFacebookF />
-        </Link>
-        <Link to={"#"} target="_blank">
-          <FaYoutube />
-        </Link>
-        <Link to={"#"} target="_blank">
-          <FaLinkedin />
-        </Link>
-        <Link to={"#"} target="_blank">
-          <RiInstagramFill />
-        </Link>
+    <footer className="bg-slate-950 border-t border-slate-800 py-8 mt-auto">
+      <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+        © 2024 HireMeToo • Made with <span className="text-red-500">♥</span> by Prateek
       </div>
     </footer>
   );
 };
-
 export default Footer;

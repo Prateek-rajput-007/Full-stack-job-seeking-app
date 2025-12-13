@@ -5,7 +5,7 @@ import { Context } from './main';
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import { Toaster } from "react-hot-toast";
-import axios from "axios";
+import { getUser } from "./services/userService";
 import Navbar from "./components/Layout/Navbar";
 import Footer from "./components/Layout/Footer";
 import Home from "./components/Home/Home";
@@ -23,17 +23,13 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          "https://js-seeker.onrender.com/api/v1/user/getUser",
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await getUser();
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {
         setIsAuthorized(false);
-        console.error("Failed to fetch user:", error.response ? error.response.data : error.message);
+        // Error handling can remain or be improved
+        // console.error("Failed to fetch user:", error);
       }
     };
 

@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import { FaRegUser, FaPencilAlt, FaPhone, FaLock } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
+import { register } from "../../services/userService";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
 import { motion } from "framer-motion";
-import "./Register.css";
-import Me from "../../../public/register.png";
+import Me from "../../../public/55.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,17 +14,15 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const { isAuthorized, setIsAuthorized } = useContext(Context);
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
-      const { data } = await axios.post(
-        "https://js-seeker.onrender.com/api/v1/user/register",
-        { name, phone, email, role, password },
-        { headers: { "Content-Type": "application/json" }, withCredentials: true }
-      );
+      const { data } = await register({ name, phone, email, role, password });
       toast.success(data.message);
       setName("");
       setEmail("");
@@ -34,119 +31,176 @@ const Register = () => {
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Registration failed");
     }
+    setIsLoading(false);
   };
 
   if (isAuthorized) return <Navigate to={"/"} />;
 
   return (
-    <motion.section
-      className="registerContainer"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Left Section with JobZee Info */}
-      <div className="registerLeft">
-        <motion.img 
-          src={Me}
-          alt="JobZee Logo"
-          className="logo"
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.3 }}
-          style={{ width: "300px", height: "auto" }}
-        />
-        <h1 className="infoTitle">Join HireMeToo Today</h1>
-        <p className="infoDescription">Unlock exclusive features and connect with top employers. Your dream job is just a few clicks away.</p>
-        <div className="jobZeeInfo">
-          <h3 className="infoSubtitle">Benefits of Registering:</h3>
-          <ul className="infoList">
-            <li>Personalized job recommendations</li>
-            <li>Direct messaging with employers</li>
-            <li>Access to premium job listings</li>
-            <li>Career development resources</li>
-            <li>Early access to new job postings</li>
-          </ul>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Register Form */}
-      <motion.div 
-        className="registerBox"
-        initial={{ x: 50 }}
-        animate={{ x: 0 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10"
       >
-        <h2>Register</h2>
-        <form>
-          <div className="inputField">
-            <label>Role</label>
-            <div className="inputWrapper">
-              <select value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="">Select Role</option>
-                <option value="Employer">Employer</option>
-                <option value="Job Seeker">Job Seeker</option>
-              </select>
-              <FaRegUser />
-            </div>
+        {/* Left Section with Info */}
+        <div className="hidden md:flex flex-col items-start text-left space-y-6">
+          <motion.img
+            src={Me}
+            alt="JobZee Logo"
+            className="w-full max-w-md object-contain drop-shadow-2xl"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          />
+
+          <div className="space-y-4">
+            <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+              Join{" "}
+              <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                HireMeToo
+              </span>{" "}
+              Today
+            </h1>
+            <p className="text-xl text-slate-300">
+              Unlock exclusive features and connect with top employers. Your dream job is just a few clicks away.
+            </p>
           </div>
-          <div className="inputField">
-            <label>Name</label>
-            <div className="inputWrapper">
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <FaPencilAlt />
-            </div>
+
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 w-full">
+            <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-gradient-to-b from-violet-500 to-fuchsia-500 rounded-full"></span>
+              Benefits of Registering:
+            </h3>
+            <ul className="space-y-3">
+              {[
+                "Personalized job recommendations",
+                "Direct messaging with employers",
+                "Access to premium job listings",
+                "Career development resources",
+                "Early access to new job postings"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-slate-300">
+                  <div className="w-1.5 h-1.5 rounded-full bg-violet-500"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="inputField">
-            <label>Email</label>
-            <div className="inputWrapper">
-              <input
-                type="email"
-                placeholder="example@mail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <MdOutlineMailOutline />
-            </div>
+        </div>
+
+        {/* Register Form */}
+        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-2">Create Account</h2>
+            <p className="text-slate-400">Join our community today</p>
           </div>
-          <div className="inputField">
-            <label>Phone</label>
-            <div className="inputWrapper">
-              <input
-                type="number"
-                placeholder="Your Phone Number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              <FaPhone />
+
+          <form onSubmit={handleRegister} className="space-y-5">
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-slate-300">Role</label>
+              <div className="relative">
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                >
+                  <option value="">Select Role</option>
+                  <option value="Employer">Employer</option>
+                  <option value="Job Seeker">Job Seeker</option>
+                </select>
+                <FaRegUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
+              </div>
             </div>
-          </div>
-          <div className="inputField">
-            <label>Password</label>
-            <div className="inputWrapper">
-              <input
-                type="password"
-                placeholder="Your Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <FaLock />
+
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-slate-300">Full Name</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                />
+                <FaPencilAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
+              </div>
             </div>
-          </div>
-          <button type="submit" onClick={handleRegister}>
-            Register
-          </button>
-          <Link to={"/login"}>Already have an account? Login Now</Link>
-        </form>
+
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-slate-300">Email Address</label>
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="example@mail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                />
+                <MdOutlineMailOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-slate-300">Phone Number</label>
+              <div className="relative">
+                <input
+                  type="number"
+                  placeholder="Your Phone Number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                />
+                <FaPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-slate-300">Password</label>
+              <div className="relative">
+                <input
+                  type="password"
+                  placeholder="Your Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                />
+                <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed text-lg mt-4"
+            >
+              {isLoading ? "Creating Account..." : "Register"}
+            </button>
+
+            <div className="text-center mt-6">
+              <p className="text-slate-400">
+                Already have an account?{" "}
+                <Link
+                  to={"/login"}
+                  className="text-white font-semibold hover:text-violet-400 transition-colors"
+                >
+                  Login Now
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </motion.div>
-    </motion.section>
+    </div>
   );
 };
 
