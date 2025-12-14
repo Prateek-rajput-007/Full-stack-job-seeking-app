@@ -32,6 +32,24 @@ const PostJob = () => {
 
   const handleJobPost = async (e) => {
     e.preventDefault();
+
+    if (!title || !description || !category || !country || !city || !location) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    if (salaryType === "default") {
+      toast.error("Please select a salary type.");
+      return;
+    }
+    if (salaryType === "Fixed Salary" && !fixedSalary) {
+      toast.error("Please provide a fixed salary.");
+      return;
+    }
+    if (salaryType === "Ranged Salary" && (!salaryFrom || !salaryTo)) {
+      toast.error("Please provide a salary range.");
+      return;
+    }
+
     if (salaryType === "Fixed Salary") {
       setSalaryFrom("");
       setSalaryTo("");
@@ -89,6 +107,36 @@ const PostJob = () => {
     navigateTo("/");
   }
 
+  const handleNext = () => {
+    if (currentStep === 1) {
+      if (!title || !category) {
+        toast.error("Please provide a title and category.");
+        return;
+      }
+    }
+    if (currentStep === 2) {
+      if (!country || !city || !location) {
+        toast.error("Please provide complete location details.");
+        return;
+      }
+    }
+    if (currentStep === 3) {
+      if (salaryType === "default") {
+        toast.error("Please select a salary type.");
+        return;
+      }
+      if (salaryType === "Fixed Salary" && !fixedSalary) {
+        toast.error("Please provide a fixed salary.");
+        return;
+      }
+      if (salaryType === "Ranged Salary" && (!salaryFrom || !salaryTo)) {
+        toast.error("Please provide a salary range.");
+        return;
+      }
+    }
+    setCurrentStep((prev) => prev + 1);
+  };
+
   const steps = [
     { number: 1, title: "Basic Info", icon: <FaBriefcase /> },
     { number: 2, title: "Location", icon: <FaMapMarkerAlt /> },
@@ -97,14 +145,14 @@ const PostJob = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="relative max-w-5xl mx-auto mt-15">
+      <div className="relative max-w-4xl mx-auto mt-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,13 +163,13 @@ const PostJob = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-3xl mb-6 shadow-xl shadow-violet-500/30">
             <FaBriefcase className="text-4xl text-white" />
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Post a{" "}
             <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
               New Job
             </span>
           </h1>
-          <p className="text-slate-400 text-lg">
+          <p className="text-slate-400 text-base">
             Create an attractive job listing to find the perfect candidates
           </p>
         </motion.div>
@@ -138,7 +186,7 @@ const PostJob = () => {
               <React.Fragment key={step.number}>
                 <div className="flex flex-col items-center">
                   <div
-                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-xl sm:text-2xl transition-all duration-300 ${currentStep >= step.number
+                    className={`w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-lg sm:text-xl transition-all duration-300 ${currentStep >= step.number
                       ? "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-500/30"
                       : "bg-slate-800 text-slate-500 border-2 border-slate-700"
                       }`}
@@ -167,7 +215,7 @@ const PostJob = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl"
+          className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl"
         >
           <form onSubmit={handleJobPost} className="space-y-8">
             {/* Step 1: Basic Info */}
@@ -195,7 +243,7 @@ const PostJob = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. Senior React Developer"
                     required
-                    className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                   />
                 </div>
 
@@ -207,7 +255,7 @@ const PostJob = () => {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
-                    className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                   >
                     <option value="">Select a Category</option>
                     <option value="Graphics & Design">Graphics & Design</option>
@@ -252,7 +300,7 @@ const PostJob = () => {
                       onChange={(e) => setCountry(e.target.value)}
                       placeholder="e.g. United States"
                       required
-                      className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                     />
                   </div>
 
@@ -267,7 +315,7 @@ const PostJob = () => {
                       onChange={(e) => setCity(e.target.value)}
                       placeholder="e.g. New York"
                       required
-                      className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
@@ -282,7 +330,7 @@ const PostJob = () => {
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="e.g. 123 Main Street, Building A, Floor 5"
                     required
-                    className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                   />
                 </div>
               </motion.div>
@@ -312,7 +360,7 @@ const PostJob = () => {
                       value={salaryType}
                       onChange={(e) => setSalaryType(e.target.value)}
                       required
-                      className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                     >
                       <option value="default">Select Salary Type</option>
                       <option value="Fixed Salary">Fixed Salary</option>
@@ -337,7 +385,7 @@ const PostJob = () => {
                           value={fixedSalary}
                           onChange={(e) => setFixedSalary(e.target.value)}
                           required
-                          className="w-full pl-10 pr-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                          className="w-full pl-10 pr-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                         />
                       </div>
                     </div>
@@ -355,7 +403,7 @@ const PostJob = () => {
                             value={salaryFrom}
                             onChange={(e) => setSalaryFrom(e.target.value)}
                             required
-                            className="w-full pl-10 pr-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                            className="w-full pl-10 pr-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                           />
                         </div>
                       </div>
@@ -371,7 +419,7 @@ const PostJob = () => {
                             value={salaryTo}
                             onChange={(e) => setSalaryTo(e.target.value)}
                             required
-                            className="w-full pl-10 pr-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                            className="w-full pl-10 pr-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                           />
                         </div>
                       </div>
@@ -406,7 +454,7 @@ const PostJob = () => {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Describe the role, responsibilities, requirements, qualifications, and benefits in detail..."
                     required
-                    className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none"
                   />
                   <p className="text-sm text-slate-500 mt-3 flex items-center gap-2">
                     <FaCheckCircle className="text-violet-400" />
@@ -426,7 +474,7 @@ const PostJob = () => {
                   onClick={() => setCurrentStep(currentStep - 1)}
                   className="flex-1 py-4 bg-slate-800 text-white text-lg font-semibold rounded-xl border-2 border-slate-700 hover:border-slate-600 transition-all duration-300"
                 >
-                  Previous Step
+                  Previous
                 </motion.button>
               )}
 
@@ -435,10 +483,10 @@ const PostJob = () => {
                   type="button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => setCurrentStep(currentStep + 1)}
+                  onClick={handleNext}
                   className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-lg font-semibold rounded-xl hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 shadow-lg shadow-violet-500/30"
                 >
-                  Next Step
+                  Next
                 </motion.button>
               ) : (
                 <motion.button
@@ -448,7 +496,7 @@ const PostJob = () => {
                   className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-lg font-semibold rounded-xl hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 shadow-lg shadow-violet-500/30 flex items-center justify-center gap-2"
                 >
                   <FaCheckCircle />
-                  Create Job Posting
+                  Create Job
                 </motion.button>
               )}
             </div>

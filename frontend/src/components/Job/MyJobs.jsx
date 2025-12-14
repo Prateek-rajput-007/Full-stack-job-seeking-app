@@ -101,7 +101,7 @@ const MyJobs = () => {
   });
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white pt-20 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 -right-40 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl animate-pulse"></div>
@@ -109,14 +109,14 @@ const MyJobs = () => {
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-10 mt-15">
+      <div className="relative max-w-5xl mx-auto z-10 mt-10">
         {/* Header with Stats */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-white">Job Dashboard</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Manage, edit, and track all your job postings in one place.</p>
+            <p className="text-slate-400 text-base max-w-2xl mx-auto">Manage, edit, and track all your job postings in one place.</p>
           </div>
 
           {/* Stats Cards */}
@@ -126,9 +126,9 @@ const MyJobs = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-slate-400 text-sm mb-1 uppercase tracking-wider">Total Jobs</p>
-                  <p className="text-4xl font-bold text-white">{myJobs.length}</p>
+                  <p className="text-3xl font-bold text-white">{myJobs.length}</p>
                 </div>
-                <div className="w-14 h-14 bg-violet-500/10 rounded-2xl flex items-center justify-center text-violet-400 text-2xl">
+                <div className="w-12 h-12 bg-violet-500/10 rounded-2xl flex items-center justify-center text-violet-400 text-2xl">
                   <FaBriefcase />
                 </div>
               </div>
@@ -139,9 +139,9 @@ const MyJobs = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-slate-400 text-sm mb-1 uppercase tracking-wider">Active Jobs</p>
-                  <p className="text-4xl font-bold text-white">{myJobs.filter(j => !j.expired).length}</p>
+                  <p className="text-3xl font-bold text-white">{myJobs.filter(j => !j.expired).length}</p>
                 </div>
-                <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 text-2xl">
+                <div className="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 text-2xl">
                   <FaCheckCircle />
                 </div>
               </div>
@@ -152,9 +152,9 @@ const MyJobs = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-slate-400 text-sm mb-1 uppercase tracking-wider">Expired Jobs</p>
-                  <p className="text-4xl font-bold text-white">{myJobs.filter(j => j.expired).length}</p>
+                  <p className="text-3xl font-bold text-white">{myJobs.filter(j => j.expired).length}</p>
                 </div>
-                <div className="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500 text-2xl">
+                <div className="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500 text-2xl">
                   <FaTimesCircle />
                 </div>
               </div>

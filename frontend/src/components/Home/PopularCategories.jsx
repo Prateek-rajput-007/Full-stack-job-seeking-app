@@ -89,7 +89,7 @@ const categories = [
 const PopularCategories = () => {
   return (
     <section className="relative py-24 sm:py-32 bg-slate-950 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,13 +101,13 @@ const PopularCategories = () => {
           <div className="inline-block px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/10 text-violet-400 text-sm font-semibold mb-6">
             Trending Categories
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Explore{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-purple-400">
               Careers
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base text-slate-400 max-w-2xl mx-auto">
             Discover opportunities in the most in-demand fields and take your career to the next level.
           </p>
         </motion.div>
@@ -126,16 +126,16 @@ const PopularCategories = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              <div className="relative h-full bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-6 hover:border-violet-500/30 transition-all duration-300 flex flex-col items-center text-center group-hover:bg-slate-900/60">
+              <div className="relative h-full bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-4 hover:border-violet-500/30 transition-all duration-300 flex flex-col items-center text-center group-hover:bg-slate-900/60">
                 {/* Icon */}
-                <div className={`w-16 h-16 rounded-2xl ${category.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <span className={`text-3xl text-white`}>
+                <div className={`w-12 h-12 rounded-2xl ${category.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <span className={`text-xl text-white`}>
                     {category.icon}
                   </span>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-violet-200 transition-colors">
+                <h3 className="text-base font-bold text-white mb-2 group-hover:text-violet-200 transition-colors">
                   {category.title}
                 </h3>
                 <p className="text-slate-400 text-sm mb-4">

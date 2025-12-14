@@ -39,7 +39,7 @@ const Register = () => {
   if (isAuthorized) return <Navigate to={"/"} />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
@@ -50,33 +50,33 @@ const Register = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10"
+        className="w-full max-w-4xl grid md:grid-cols-2 gap-6 items-center relative z-10"
       >
         {/* Left Section with Info */}
         <div className="hidden md:flex flex-col items-start text-left space-y-6">
           <motion.img
             src={Me}
             alt="JobZee Logo"
-            className="w-full max-w-md object-contain drop-shadow-2xl"
+            className="w-full max-w-xs object-contain drop-shadow-2xl"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           />
 
           <div className="space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+            <h1 className="text-2xl lg:text-3xl font-bold text-white leading-tight">
               Join{" "}
               <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
                 HireMeToo
               </span>{" "}
               Today
             </h1>
-            <p className="text-xl text-slate-300">
+            <p className="text-base text-slate-300">
               Unlock exclusive features and connect with top employers. Your dream job is just a few clicks away.
             </p>
           </div>
 
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 w-full">
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-4 w-full">
             <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-gradient-to-b from-violet-500 to-fuchsia-500 rounded-full"></span>
               Benefits of Registering:
@@ -99,9 +99,9 @@ const Register = () => {
         </div>
 
         {/* Register Form */}
-        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-white mb-2">Create Account</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">Create Account</h2>
             <p className="text-slate-400">Join our community today</p>
           </div>
 
@@ -112,7 +112,7 @@ const Register = () => {
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 pl-10 bg-slate-800/50 border border-slate-700 rounded-xl text-white appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                 >
                   <option value="">Select Role</option>
                   <option value="Employer">Employer</option>
@@ -130,7 +130,7 @@ const Register = () => {
                   placeholder="Your Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 pl-10 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                 />
                 <FaPencilAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
               </div>
@@ -144,7 +144,7 @@ const Register = () => {
                   placeholder="example@mail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 pl-10 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                 />
                 <MdOutlineMailOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl" />
               </div>
@@ -158,7 +158,7 @@ const Register = () => {
                   placeholder="Your Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 pl-10 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                 />
                 <FaPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
               </div>
@@ -172,7 +172,7 @@ const Register = () => {
                   placeholder="Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-5 py-3 pl-12 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 pl-10 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                 />
                 <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" />
               </div>
@@ -181,7 +181,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed text-lg mt-4"
+              className="w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed text-lg mt-4"
             >
               {isLoading ? "Creating Account..." : "Register"}
             </button>

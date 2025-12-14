@@ -94,7 +94,7 @@ const JobSeekerHome = () => {
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10 mt-15">
+            <div className="max-w-7xl mx-auto relative z-10 mt-20">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}

@@ -72,14 +72,14 @@ const Jobs = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-20 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white pt-16 pb-12 relative overflow-hidden">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[100px] animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "2s" }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-10">
 
         {/* Header Section */}
         <motion.div
@@ -87,10 +87,10 @@ const Jobs = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
             Find Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-white">Dream Career</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base max-w-2xl mx-auto">
             Browse through thousands of job opportunities from top companies and startups.
           </p>
         </motion.div>
@@ -100,7 +100,7 @@ const Jobs = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl p-6 mb-12 shadow-2xl relative overflow-hidden group"
+          className="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl p-4 mb-8 shadow-2xl relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
@@ -113,7 +113,7 @@ const Jobs = () => {
                 placeholder="Search by job title, skill, or company..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-3.5 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-violet-500/50 placeholder-slate-500 transition-all"
+                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-2.5 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-violet-500/50 placeholder-slate-500 transition-all text-sm"
               />
             </div>
 
@@ -123,7 +123,7 @@ const Jobs = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-3.5 pl-12 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500/50 cursor-pointer text-slate-300"
+                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-2.5 pl-10 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500/50 cursor-pointer text-slate-300 text-sm"
               >
                 <option value="">All Categories</option>
                 {categories.map((cat) => (
@@ -139,7 +139,7 @@ const Jobs = () => {
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-3.5 pl-12 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500/50 cursor-pointer text-slate-300"
+                className="w-full bg-slate-950/50 border border-slate-700 text-white rounded-xl py-2.5 pl-10 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-violet-500/50 cursor-pointer text-slate-300 text-sm"
               >
                 <option value="">All Locations</option>
                 {locations.map((loc) => (
@@ -154,13 +154,13 @@ const Jobs = () => {
               {(searchTerm || selectedCategory || selectedLocation) ? (
                 <button
                   onClick={() => { setSearchTerm(""); setSelectedCategory(""); setSelectedLocation(""); }}
-                  className="p-3.5 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition-colors tooltip"
+                  className="p-2.5 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition-colors tooltip"
                   title="Clear Filters"
                 >
                   <FaTimes />
                 </button>
               ) : (
-                <div className="p-3.5 bg-slate-800 text-slate-500 rounded-xl">
+                <div className="p-2.5 bg-slate-800 text-slate-500 rounded-xl">
                   <FaFilter />
                 </div>
               )}
@@ -214,7 +214,7 @@ const Jobs = () => {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Link to={`/job/${job._id}`} className="block h-full">
-                    <div className="group relative h-full bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-violet-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-violet-900/20 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+                    <div className="group relative h-full bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-violet-500/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-2xl hover:shadow-violet-900/20 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
 
                       {/* Hover Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 to-fuchsia-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -257,7 +257,7 @@ const Jobs = () => {
                       </div>
 
                       <div className="relative z-10 pt-4 border-t border-slate-800/50">
-                        <button className="w-full py-3 rounded-xl bg-slate-800 group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-fuchsia-600 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                        <button className="w-full py-2.5 rounded-xl bg-slate-800 group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-fuchsia-600 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 text-sm">
                           View Details
                           <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform" />
                         </button>
