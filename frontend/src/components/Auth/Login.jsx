@@ -3,6 +3,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { Link, Navigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa6";
 import { login } from "../../services/userService";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
@@ -150,9 +151,16 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {isLoading ? "Logging in..." : "Login"}
+              {isLoading ? (
+                <>
+                  <FaSpinner className="animate-spin text-xl" />
+                  Logging in...
+                </>
+              ) : (
+                "Login"
+              )}
             </button>
 
             <div className="text-center mt-6">

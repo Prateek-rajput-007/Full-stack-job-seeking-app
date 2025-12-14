@@ -13,6 +13,7 @@ import {
   FaGlobe,
   FaCity
 } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa6";
 
 const PostJob = () => {
   const [title, setTitle] = useState("");
@@ -26,6 +27,7 @@ const PostJob = () => {
   const [fixedSalary, setFixedSalary] = useState("");
   const [salaryType, setSalaryType] = useState("default");
   const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { isAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
@@ -83,6 +85,7 @@ const PostJob = () => {
       };
 
     try {
+      setIsLoading(true);
       const res = await postJob(jobData);
       toast.success(res.data.message);
 
@@ -100,6 +103,8 @@ const PostJob = () => {
       setCurrentStep(1);
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -493,10 +498,20 @@ const PostJob = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-lg font-semibold rounded-xl hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 shadow-lg shadow-violet-500/30 flex items-center justify-center gap-2"
+                  disabled={isLoading}
+                  className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-lg font-semibold rounded-xl hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 shadow-lg shadow-violet-500/30 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <FaCheckCircle />
-                  Create Job
+                  {isLoading ? (
+                    <>
+                      <FaSpinner className="animate-spin" />
+                      Creating Job...
+                    </>
+                  ) : (
+                    <>
+                      <FaCheckCircle />
+                      Create Job
+                    </>
+                  )}
                 </motion.button>
               )}
             </div>

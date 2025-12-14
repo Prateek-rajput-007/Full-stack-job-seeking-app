@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../main";
+import { FaSpinner } from "react-icons/fa6";
 
 const Application = () => {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ const Application = () => {
   const [coverLetter, setCoverLetter] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [sending, setSending] = useState(false);
 
   const { isAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
@@ -38,6 +40,7 @@ const Application = () => {
     };
 
     console.log("Sending application:", requestData); // Debugging: Check payload before sending
+    setSending(true);
 
     try {
       const { data } = await postApplication(requestData);
@@ -54,6 +57,8 @@ const Application = () => {
     } catch (error) {
       console.error("Error submitting application:", error.response?.data);
       toast.error(error.response?.data?.message || "An error occurred. Please try again.");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -129,9 +134,17 @@ const Application = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-base font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02]"
+              disabled={sending}
+              className={`w-full py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-base font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
             >
-              Send Application
+              {sending ? (
+                <>
+                  <FaSpinner className="animate-spin text-xl" />
+                  Sending Application...
+                </>
+              ) : (
+                "Send Application"
+              )}
             </button>
           </form>
         </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaRegUser, FaPencilAlt, FaPhone, FaLock } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa6";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { Link, Navigate } from "react-router-dom";
 import { register } from "../../services/userService";
@@ -181,9 +182,16 @@ const Register = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed text-lg mt-4"
+              className="w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed text-lg mt-4 flex items-center justify-center gap-2"
             >
-              {isLoading ? "Creating Account..." : "Register"}
+              {isLoading ? (
+                <>
+                  <FaSpinner className="animate-spin text-xl" />
+                  Creating Account...
+                </>
+              ) : (
+                "Register"
+              )}
             </button>
 
             <div className="text-center mt-6">
