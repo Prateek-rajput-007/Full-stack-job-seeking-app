@@ -57,7 +57,7 @@ const Register = () => {
           <motion.img
             src={Me}
             alt="JobZee Logo"
-            className="w-full max-w-xs object-contain drop-shadow-2xl"
+            className="w-full max-w-xl object-contain drop-shadow-2xl -mb-4"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
