@@ -4,7 +4,7 @@ import { getJobSeekerApplications, getEmployerApplications, deleteApplication } 
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFileAlt, FaTrash } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFileAlt, FaTrash, FaFilePdf, FaFileWord, FaFileUpload } from "react-icons/fa";
 
 const MyApplications = () => {
   const { user, isAuthorized } = useContext(Context);
@@ -25,7 +25,22 @@ const MyApplications = () => {
         } else {
           response = await getJobSeekerApplications();
         }
-        setApplications(response.data.applications);
+
+        // Merge resume data from localStorage
+        const applicationsWithResumes = response.data.applications.map(app => {
+          const savedResume = localStorage.getItem(`application_resume_${app._id}`);
+          if (savedResume) {
+            try {
+              const resumeData = JSON.parse(savedResume);
+              return { ...app, resume: resumeData.name };
+            } catch (error) {
+              console.error('Error parsing resume data:', error);
+            }
+          }
+          return app;
+        });
+
+        setApplications(applicationsWithResumes);
       } catch (error) {
         toast.error(error.response?.data?.message || "Something went wrong");
       }
@@ -150,7 +165,29 @@ const JobSeekerCard = ({ application, deleteApplication, index }) => (
         </div>
       </div>
 
-      <div className="pt-4 border-t border-slate-800">
+      <div className="pt-4 border-t border-slate-800 space-y-4">
+        {/* Resume Section */}
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 flex-shrink-0">
+            {application.resume ? (
+              application.resume.endsWith('.pdf') ? <FaFilePdf /> :
+                application.resume.endsWith('.doc') || application.resume.endsWith('.docx') ? <FaFileWord /> :
+                  <FaFileUpload />
+            ) : (
+              <FaFileUpload />
+            )}
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-slate-400 mb-1">Resume</p>
+            {application.resume ? (
+              <p className="text-white font-medium text-sm truncate">{application.resume}</p>
+            ) : (
+              <p className="text-slate-500 text-sm italic">No resume uploaded</p>
+            )}
+          </div>
+        </div>
+
+        {/* Cover Letter Section */}
         <div className="flex items-start gap-3">
           <FaFileAlt className="text-slate-500 mt-1 flex-shrink-0" />
           <div>
@@ -223,7 +260,29 @@ const EmployerCard = ({ application, index }) => (
         </div>
       </div>
 
-      <div className="pt-4 border-t border-slate-800">
+      <div className="pt-4 border-t border-slate-800 space-y-4">
+        {/* Resume Section */}
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 flex-shrink-0">
+            {application.resume ? (
+              application.resume.endsWith('.pdf') ? <FaFilePdf /> :
+                application.resume.endsWith('.doc') || application.resume.endsWith('.docx') ? <FaFileWord /> :
+                  <FaFileUpload />
+            ) : (
+              <FaFileUpload />
+            )}
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-slate-400 mb-1">Resume</p>
+            {application.resume ? (
+              <p className="text-white font-medium text-sm truncate">{application.resume}</p>
+            ) : (
+              <p className="text-slate-500 text-sm italic">No resume uploaded</p>
+            )}
+          </div>
+        </div>
+
+        {/* Cover Letter Section */}
         <div className="flex items-start gap-3">
           <FaFileAlt className="text-slate-500 mt-1 flex-shrink-0" />
           <div>
